@@ -1,0 +1,9 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Open access for simplicity in the demo preview, matching local client usage
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}

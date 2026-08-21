@@ -1,0 +1,8 @@
+{
+  "name": "Remix GO'SHT MARKAZI POS",
+  "description": "Go'sht do'koni uchun kassa (POS), tovarlar zaxirasi va savdo hisobi tizimi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

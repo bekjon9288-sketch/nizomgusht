@@ -1,0 +1,8 @@
+{
+  "firestore": [
+    {
+      "database": "ai-studio-nurstroyposinven-a9ba8233-9946-42d6-84dc-699bf00b8f06",
+      "rules": "firestore.rules"
+    }
+  ]
+}

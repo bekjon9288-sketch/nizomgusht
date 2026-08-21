@@ -1,0 +1,140 @@
+{
+  "entities": {
+    "Material": {
+      "title": "Material",
+      "description": "Product inventory item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "sku": { "type": "string" },
+        "category": { "type": "string" },
+        "stock": { "type": "number" },
+        "unit": { "type": "string" },
+        "costPrice": { "type": "number" },
+        "sellingPrice": { "type": "number" },
+        "minStock": { "type": "number" },
+        "location": { "type": "string" },
+        "image": { "type": "string" },
+        "volume": { "type": "string" },
+        "weight": { "type": "string" },
+        "length": { "type": "string" },
+        "productType": { "type": "string" }
+      },
+      "required": ["id", "name", "sku", "category", "stock", "unit", "costPrice", "sellingPrice"]
+    },
+    "SaleTransaction": {
+      "title": "SaleTransaction",
+      "description": "A recorded sales transaction",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "items": { "type": "array" },
+        "subtotal": { "type": "number" },
+        "discountAmount": { "type": "number" },
+        "taxAmount": { "type": "number" },
+        "total": { "type": "number" },
+        "profit": { "type": "number" },
+        "paymentMethod": { "type": "string" },
+        "customerName": { "type": "string" },
+        "customerPhone": { "type": "string" },
+        "customerType": { "type": "string" },
+        "stir": { "type": "string" },
+        "notes": { "type": "string" },
+        "loyaltyCardCode": { "type": "string" },
+        "redeemedBonuses": { "type": "number" }
+      },
+      "required": ["id", "timestamp", "items", "subtotal", "total", "paymentMethod"]
+    },
+    "CustomerCredit": {
+      "title": "CustomerCredit",
+      "description": "Store credit and debt ledger for a customer",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "customerName": { "type": "string" },
+        "customerPhone": { "type": "string" },
+        "customerType": { "type": "string" },
+        "stir": { "type": "string" },
+        "totalDebt": { "type": "number" },
+        "lastUpdated": { "type": "string" },
+        "transactions": { "type": "array" },
+        "payments": { "type": "array" }
+      },
+      "required": ["id", "customerName", "customerPhone", "totalDebt", "lastUpdated"]
+    },
+    "POSSettings": {
+      "title": "POSSettings",
+      "description": "Point of Sale terminal configuration settings",
+      "type": "object",
+      "properties": {
+        "shopName": { "type": "string" },
+        "shopAddress": { "type": "string" },
+        "shopPhone": { "type": "string" },
+        "taxRate": { "type": "number" },
+        "currencySymbol": { "type": "string" },
+        "cashierName": { "type": "string" }
+      },
+      "required": ["shopName", "shopAddress", "shopPhone", "taxRate", "currencySymbol"]
+    },
+    "LoyaltyCard": {
+      "title": "LoyaltyCard",
+      "description": "Customer loyalty card and cashback balance",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "customerName": { "type": "string" },
+        "customerPhone": { "type": "string" },
+        "cardCode": { "type": "string" },
+        "bonusBalance": { "type": "number" },
+        "totalSpent": { "type": "number" },
+        "purchaseCount": { "type": "number" },
+        "bonusPercentage": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "customerName", "customerPhone", "cardCode", "bonusBalance", "totalSpent", "purchaseCount", "bonusPercentage"]
+    },
+    "PendingOrder": {
+      "title": "PendingOrder",
+      "description": "A pending shopping cart prepared by a seller waiting for checkout",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "sellerName": { "type": "string" },
+        "customerName": { "type": "string" },
+        "customerPhone": { "type": "string" },
+        "items": { "type": "array" },
+        "notes": { "type": "string" }
+      },
+      "required": ["id", "timestamp", "sellerName", "items"]
+    }
+  },
+  "firestore": {
+    "materials/{materialId}": {
+      "schema": "Material",
+      "description": "Inventory products collection"
+    },
+    "transactions/{transactionId}": {
+      "schema": "SaleTransaction",
+      "description": "POS sales history"
+    },
+    "credits/{creditId}": {
+      "schema": "CustomerCredit",
+      "description": "Customer store credit ledger"
+    },
+    "settings/{settingId}": {
+      "schema": "POSSettings",
+      "description": "Application settings configurations"
+    },
+    "loyalty_cards/{cardId}": {
+      "schema": "LoyaltyCard",
+      "description": "Customer loyalty program registrations"
+    },
+    "pending_orders/{orderId}": {
+      "schema": "PendingOrder",
+      "description": "Active orders sent by floor sellers to the cashier"
+    }
+  }
+}
